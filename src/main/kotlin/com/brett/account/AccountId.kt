@@ -1,8 +1,9 @@
 package com.brett.account
 
+import com.brett.common.AggregateId
 import java.util.*
 
-class AccountId (val value: UUID) {
+class AccountId (val value: UUID) : AggregateId {
     companion object {
         fun new() : AccountId = AccountId(UUID.randomUUID())
     }
