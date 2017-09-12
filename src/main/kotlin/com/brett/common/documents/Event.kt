@@ -1,9 +1,9 @@
 package com.brett.common.documents
 
+import com.brett.common.AggregateId
 import org.springframework.data.mongodb.core.mapping.Document
-import java.util.*
 
 @Document(collection = "Event")
 interface Event {
-    val Id: UUID
+    val Id: AggregateId
 }

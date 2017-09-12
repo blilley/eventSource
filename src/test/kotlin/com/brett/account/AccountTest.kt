@@ -15,7 +15,7 @@ class AccountTest{
         assertThat(account.userName).isEqualTo("newAccount")
         assertThat(account.accountId).isEqualTo(accountId)
         assertThat(account.uncommittedEvents).hasSize(1)
-        assertThat(account.uncommittedEvents[0]).isEqualTo(AccountCreatedEvent(accountId.value, "newAccount"))
+        assertThat(account.uncommittedEvents[0]).isEqualTo(AccountCreatedEvent(accountId, "newAccount"))
     }
 
     @Test

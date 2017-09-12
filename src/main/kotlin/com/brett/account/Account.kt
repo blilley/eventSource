@@ -15,7 +15,7 @@ class Account : Aggregate {
     constructor(accountId: AccountId, userName: String) : this() {
         userName.guard { throw  AggregateException("User name cannot be null or empty")}
 
-        raiseEvent(AccountCreatedEvent(accountId.value, userName))
+        raiseEvent(AccountCreatedEvent(accountId, userName))
     }
 
     private constructor(){
@@ -23,7 +23,7 @@ class Account : Aggregate {
     }
 
     private fun apply(event: AccountCreatedEvent){
-        this.accountId = AccountId(event.Id)
+        this.accountId = event.Id
         this.userName = event.userName
     }
 
