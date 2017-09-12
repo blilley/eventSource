@@ -40,7 +40,7 @@ abstract class Aggregate {
 
         fun dispatch(eventMessage: Event)
         {
-            val handler = handlers[eventMessage::class] ?: throw RuntimeException()
+            val handler = handlers[eventMessage::class] ?: throw RuntimeException("Unable to locate handler for aggregate event")
             handler(eventMessage)
         }
     }
