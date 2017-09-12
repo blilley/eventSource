@@ -36,4 +36,12 @@ class AccountTest{
             assertThat(it.userName).isEqualTo("NewName")
         })
     }
+
+    @Test
+    fun modifyUserName_ShouldThrowExceptionWhenEmptyUserName() {
+        val account = Account(AccountId.new(), "OriginalName")
+
+        assertThatExceptionOfType(AggregateException::class.java).isThrownBy { account.modifyUserName("")}
+        assertThat(account.userName).isEqualTo("OriginalName")
+    }
 }
