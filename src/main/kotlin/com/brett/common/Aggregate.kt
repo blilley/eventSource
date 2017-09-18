@@ -1,6 +1,5 @@
 package com.brett.common
 
-import com.brett.common.documents.Event
 import kotlin.reflect.KClass
 
 abstract class Aggregate {
@@ -11,7 +10,7 @@ abstract class Aggregate {
     protected val registrationEventRouter = EventRouter()
     val uncommittedEvents: List<Event> get() = _uncommittedEvents
 
-    private fun applyEvent(event: Event) {
+    protected fun applyEvent(event: Event) {
         registrationEventRouter.dispatch(event)
     }
 

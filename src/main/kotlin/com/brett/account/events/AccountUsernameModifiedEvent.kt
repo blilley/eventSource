@@ -1,5 +1,5 @@
 package com.brett.account.events
 
-import com.brett.common.documents.Event
+import com.brett.common.Event
 
-class AccountUsernameModifiedEvent(val userName: String) : Event
+data class AccountUsernameModifiedEvent(val userName: String) : Event

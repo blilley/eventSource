@@ -1,9 +1,10 @@
 package com.brett.account
 
 import com.brett.common.AggregateId
+import java.io.Serializable
 import java.util.*
 
-class AccountId (val value: UUID) : AggregateId {
+class AccountId (override val value: UUID) : AggregateId, Serializable {
     companion object {
         fun new() : AccountId = AccountId(UUID.randomUUID())
     }

@@ -1,3 +1,7 @@
 package com.brett.common
 
-interface AggregateId
+import java.util.*
+
+interface AggregateId{
+    val value : UUID
+}

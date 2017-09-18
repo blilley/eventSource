@@ -1,13 +1,13 @@
 package com.brett.account
 
-import com.brett.account.events.AccountCreatedEvent
 import com.brett.account.events.AccountUsernameModifiedEvent
+import com.brett.account.events.AccountCreatedEvent
 import com.brett.common.Aggregate
-import com.brett.common.AggregateId
+import com.brett.common.Event
 import com.brett.common.exceptions.AggregateException
 
 class Account : Aggregate {
-    override val aggregateId: AggregateId get() = accountId
+    override val aggregateId: AccountId get() = accountId
 
     lateinit var userName: String
         private set
@@ -17,6 +17,10 @@ class Account : Aggregate {
     constructor(accountId: AccountId, userName: String) : this() {
         userName.guard { throw  AggregateException("User name cannot be null or empty")}
         raiseEvent(AccountCreatedEvent(accountId, userName))
+    }
+
+    constructor(events: List<Event>) : this(){
+        events.forEach { event -> applyEvent(event) }
     }
 
     private constructor(){
